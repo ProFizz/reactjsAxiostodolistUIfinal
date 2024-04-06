@@ -75,36 +75,52 @@ const TodoList = () => {
   };
 
   return (
-    <div>
-      <h1>Todo List</h1>
-      <form onSubmit={handleAddTodo}>
+    <div className="p-4">
+      <h1 className="text-2xl font-bold mb-4">TODO LIST</h1>
+      <form onSubmit={handleAddTodo} className="mb-4 flex">
         <input
           type="text"
           placeholder="Enter a new todo"
           value={newTodoTitle}
           onChange={(e) => setNewTodoTitle(e.target.value)}
+          className="p-2 border rounded flex-grow mr-2"
         />
-        <button type="submit">Add Todo</button>
+        <button
+          type="submit"
+          className="ml-2 bg-blue-500 text-white px-4 py-2 rounded"
+        >
+          Add Todo
+        </button>
       </form>
       <ul>
         {todos.map((todo) => (
-          <li key={todo.id}>
+          <li
+            key={todo.id}
+            className="border mb-1 p-2 flex justify-between items-center"
+          >
             {editingTodo && editingTodo.id === todo.id ? (
               <div>
                 <input
                   type="text"
                   value={updatedTitle}
                   onChange={(e) => setUpdatedTitle(e.target.value)}
+                  className="p-2 border rounded mr-2"
                 />
-                <label>
+                <label className="flex items-center">
                   Completed:
                   <input
                     type="checkbox"
                     checked={updatedCompleted}
                     onChange={() => setUpdatedCompleted(!updatedCompleted)}
+                    className="ml-2"
                   />
                 </label>
-                <button onClick={handleSaveEdit}>Save</button>
+                <button
+                  onClick={handleSaveEdit}
+                  className="bg-green-500 text-white px-2 py-1 rounded ml-2"
+                >
+                  Save
+                </button>
               </div>
             ) : (
               <div>
@@ -113,10 +129,14 @@ const TodoList = () => {
                   onClick={() =>
                     handleEditTodo(todo.id, todo.title, todo.completed)
                   }
+                  className="text-blue-500 hover:underline ml-2"
                 >
                   Edit
                 </button>
-                <button onClick={() => handleDeleteTodo(todo.id)}>
+                <button
+                  onClick={() => handleDeleteTodo(todo.id)}
+                  className="text-red-500 hover:underline ml-2"
+                >
                   Delete
                 </button>
               </div>
