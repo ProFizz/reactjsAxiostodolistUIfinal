@@ -76,7 +76,7 @@ const TodoList = () => {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">TODO LIST</h1>
+      <h1 className="text-2xl font-bold mb-4 bg-amber-300">TODO LIST</h1>
       <form onSubmit={handleAddTodo} className="mb-4 flex">
         <input
           type="text"
